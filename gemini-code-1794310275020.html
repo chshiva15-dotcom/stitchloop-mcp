@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StitchLoop | Hyperlocal Tailoring & Measurement Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans">
+    <div class="max-w-3xl mx-auto px-4 py-8">
+        <header class="flex justify-between items-center mb-8 border-b pb-4">
+            <div>
+                <h1 class="text-2xl font-black text-indigo-600 tracking-tight">StitchLoop</h1>
+                <p class="text-xs text-slate-500 font-medium">Hyperlocal Tailoring, Measurement Vault & Household Logistics</p>
+            </div>
+            <div id="nav-tabs" class="flex gap-2 text-xs font-semibold">
+                <button onclick="switchTab('customer')" id="btn-customer" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white">Customer Portal</button>
+                <button onclick="switchTab('operator')" id="btn-operator" class="px-3 py-1.5 rounded-lg bg-slate-200 text-slate-700">Tailor & Driver</button>
+            </div>
+        </header>
+
+        <!-- CUSTOMER PORTAL -->
+        <div id="view-customer" class="space-y-6">
+            <!-- Step 1: Onboarding -->
+            <div id="card-signup" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-lg font-bold mb-4">1. Customer Onboarding & Profile</h2>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Full Name</label>
+                        <input type="text" id="reg-name" value="Shiva Chinthala" class="w-full border rounded-lg p-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Age</label>
+                        <input type="number" id="reg-age" value="27" class="w-full border rounded-lg p-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Phone Number</label>
+                        <input type="text" id="reg-phone" value="+91 98765 43210" class="w-full border rounded-lg p-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Gender</label>
+                        <select id="reg-gender" class="w-full border rounded-lg p-2 text-sm">
+                            <option value="Male" selected>Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Non-Binary">Non-Binary</option>
+                        </select>
+                    </div>
+                    <div class="col-span-2">
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Location & Radius</label>
+                        <input type="text" id="reg-location" value="Madhapur, Hyderabad (3km radius)" class="w-full border rounded-lg p-2 text-sm">
+                    </div>
+                </div>
+                <button onclick="alert('Profile Saved & Synced!')" class="mt-4 w-full bg-indigo-600 text-white py-2 rounded-xl text-sm font-semibold hover:bg-indigo-700">Save & Continue to Marketplace</button>
+            </div>
+
+            <!-- Step 2: Request Builder & Live Tailors -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-bold">2. Create Request or Browse Live Tailors</h2>
+                    <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2 py-1 rounded-full">4 Tailors Active Nearby</span>
+                </div>
+                <div class="space-y-4 text-sm">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Purpose / Service</label>
+                        <select id="req-purpose" class="w-full border rounded-lg p-2">
+                            <option>Alteration & Fitting</option>
+                            <option>Custom Stitching</option>
+                            <option>Garment Dyeing & Wash</option>
+                            <option>Embroidery & Patchwork</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Fabric Complexity</label>
+                            <select id="req-fabric" class="w-full border rounded-lg p-2">
+                                <option>Cotton / Linen (Standard)</option>
+                                <option>Heavy Denim / Canvas</option>
+                                <option>Delicate Silk / Satin</option>
+                                <option>Wool / Suit Material</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Item Count</label>
+                            <input type="number" id="req-count" value="2" min="1" class="w-full border rounded-lg p-2">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Description & Usecase</label>
+                        <textarea id="req-desc" rows="2" class="w-full border rounded-lg p-2">Take in waist by 1.5 inches and taper ankle on 2 formal trousers.</textarea>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Budget (INR)</label>
+                            <input type="number" id="req-budget" value="350" class="w-full border rounded-lg p-2">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Logistics Mode</label>
+                            <select id="req-logistics" class="w-full border rounded-lg p-2">
+                                <option value="Doorstep Pickup">Doorstep Pickup (+₹45 Driver Fee)</option>
+                                <option value="Self Drop">Self Drop & Pick (₹0)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="submitGarmentRequest()" class="w-full bg-slate-900 text-white py-2.5 rounded-xl text-sm font-semibold hover:bg-slate-800">Broadcast Request via MCP</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Orders & Counter-Offers -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-lg font-bold mb-4">3. Active Orders & Rejection Analytics</h2>
+                <div id="orders-container" class="space-y-4">
+                    <!-- Dynamic Orders -->
+                </div>
+            </div>
+
+            <!-- Step 4: Digital Measurement Vault -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-bold">4. Digital Measurement Profile Vault</h2>
+                    <span id="vault-badge" class="text-xs bg-amber-100 text-amber-800 font-bold px-2.5 py-1 rounded-full">Self-Entered (Unverified)</span>
+                </div>
+                <p class="text-xs text-slate-500 mb-4">Sync ID: <code class="font-bold text-indigo-600">SYNC-SHIVA-904</code> | Show QR at any partner tailor shop for instant tape verification.</p>
+                <div id="measurement-inputs" class="grid grid-cols-3 gap-3 text-xs">
+                    <div><label class="block text-slate-500 mb-1">Chest (in)</label><input type="number" id="m-chest" value="40" class="w-full border p-1.5 rounded"></div>
+                    <div><label class="block text-slate-500 mb-1">Waist (in)</label><input type="number" id="m-waist" value="32" class="w-full border p-1.5 rounded"></div>
+                    <div><label class="block text-slate-500 mb-1">Shoulder (in)</label><input type="number" id="m-shoulder" value="18" class="w-full border p-1.5 rounded"></div>
+                    <div><label class="block text-slate-500 mb-1">Inseam (in)</label><input type="number" id="m-inseam" value="30" class="w-full border p-1.5 rounded"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPERATOR & DRIVER PORTAL -->
+        <div id="view-operator" class="hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-lg font-bold mb-4">Tailor Incoming Queue (Operator View)</h2>
+                <div id="operator-queue" class="space-y-4"></div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-lg font-bold mb-4">In-Store Walk-In Measurement Sync Terminal</h2>
+                <div class="space-y-3 text-sm">
+                    <div><label class="block text-xs font-semibold text-slate-600 mb-1">Customer Sync ID</label><input type="text" id="sync-target-id" value="SYNC-SHIVA-904" class="w-full border p-2 rounded"></div>
+                    <div><label class="block text-xs font-semibold text-slate-600 mb-1">Tailor Shop Name</label><input type="text" id="sync-shop-name" value="Master Rafiq Tailors, Madhapur" class="w-full border p-2 rounded"></div>
+                    <button onclick="executeTailorSync()" class="w-full bg-emerald-600 text-white py-2 rounded-xl text-sm font-semibold hover:bg-emerald-700">Calibrate & Sync to Customer Profile</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let appState = { orders: [], profiles: {} };
+
+        function switchTab(tab) {
+            if (tab === 'customer') {
+                document.getElementById('view-customer').classList.remove('hidden');
+                document.getElementById('view-operator').classList.add('hidden');
+                document.getElementById('btn-customer').className = "px-3 py-1.5 rounded-lg bg-indigo-600 text-white";
+                document.getElementById('btn-operator').className = "px-3 py-1.5 rounded-lg bg-slate-200 text-slate-700";
+            } else {
+                document.getElementById('view-customer').classList.add('hidden');
+                document.getElementById('view-operator').classList.remove('hidden');
+                document.getElementById('btn-operator').className = "px-3 py-1.5 rounded-lg bg-indigo-600 text-white";
+                document.getElementById('btn-customer').className = "px-3 py-1.5 rounded-lg bg-slate-200 text-slate-700";
+            }
+            fetchState();
+        }
+
+        async function fetchState() {
+            try {
+                const res = await fetch('/api/state');
+                appState = await res.json();
+                renderUI();
+            } catch (e) {
+                console.error("Error fetching state:", e);
+            }
+        }
+
+        async function submitGarmentRequest() {
+            const payload = {
+                customer_name: document.getElementById('reg-name').value,
+                purpose: document.getElementById('req-purpose').value,
+                fabric: document.getElementById('req-fabric').value,
+                item_count: parseInt(document.getElementById('req-count').value),
+                description: document.getElementById('req-desc').value,
+                budget_inr: parseInt(document.getElementById('req-budget').value),
+                radius_km: 3.0,
+                logistics: document.getElementById('req-logistics').value,
+                sync_id: "SYNC-SHIVA-904"
+            };
+            await fetch('/mcp/broadcast_garment_request', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(payload)
+            });
+            fetchState();
+            alert('Request broadcasted successfully via MCP!');
+        }
+
+        async function resolveCounterOffer(orderId, newBudget) {
+            await fetch(`/api/override/${orderId}`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ budget: newBudget, status: "Broadcasted (Budget Bumped)" })
+            });
+            fetchState();
+        }
+
+        async function executeTailorSync() {
+            const payload = {
+                sync_id: document.getElementById('sync-target-id').value,
+                tailor_shop_name: document.getElementById('sync-shop-name').value,
+                chest: parseFloat(document.getElementById('m-chest').value),
+                waist: parseFloat(document.getElementById('m-waist').value),
+                shoulder: parseFloat(document.getElementById('m-shoulder').value),
+                inseam: parseFloat(document.getElementById('m-inseam').value),
+                posture_notes: "Calibrated via in-store master tape inspection."
+            };
+            await fetch('/mcp/sync_tailor_measurements', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(payload)
+            });
+            fetchState();
+            alert('Measurements synced and verified successfully!');
+        }
+
+        function renderUI() {
+            // Render Orders
+            const container = document.getElementById('orders-container');
+            container.innerHTML = appState.orders.map(o => `
+                <div class="border rounded-xl p-4 bg-slate-50 text-xs space-y-2">
+                    <div class="flex justify-between font-bold">
+                        <span>${o.id} - ${o.purpose}</span>
+                        <span class="text-indigo-600">₹${o.budget}</span>
+                    </div>
+                    <p class="text-slate-600">${o.description}</p>
+                    <div class="flex justify-between items-center pt-2 border-t">
+                        <span class="font-semibold text-amber-700">Status: ${o.status}</span>
+                        ${o.rejections && o.rejections.length > 0 ? `
+                            <button onclick="resolveCounterOffer('${o.id}', ${o.rejections[0].counter_offer})" class="bg-indigo-600 text-white px-3 py-1 rounded-lg">Accept Counter (₹${o.rejections[0].counter_offer})</button>
+                        ` : ''}
+                    </div>
+                    ${o.custody_otp ? `<p class="text-[11px] text-slate-500 font-mono">Custody OTP for Driver: <strong>${o.custody_otp}</strong></p>` : ''}
+                </div>
+            `).join('');
+
+            // Render Operator Queue
+            const opQueue = document.getElementById('operator-queue');
+            opQueue.innerHTML = appState.orders.map(o => `
+                <div class="border rounded-xl p-4 bg-slate-50 text-xs space-y-2">
+                    <div class="font-bold">${o.id}: ${o.purpose} (${o.fabric})</div>
+                    <p class="text-slate-600">${o.description} - <strong>Budget: ₹${o.budget}</strong></p>
+                    <div class="flex gap-2 pt-2">
+                        <button onclick="logOp('${o.id}', 'accept')" class="bg-emerald-600 text-white px-3 py-1 rounded-lg">Accept Order</button>
+                        <button onclick="logOp('${o.id}', 'reject')" class="bg-rose-600 text-white px-3 py-1 rounded-lg">Reject & Counter</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Profile Badge
+            const profile = appState.profiles["SYNC-SHIVA-904"];
+            if (profile && profile.verified) {
+                document.getElementById('vault-badge').className = "text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-full";
+                document.getElementById('vault-badge').innerText = `Tailor-Verified by ${profile.verified_by} ✓`;
+            }
+        }
+
+        async function logOp(orderId, decision) {
+            const reason = decision === 'reject' ? prompt("Reason for rejection?", "Budget too low for fabric complexity") : null;
+            const counter = decision === 'reject' ? parseInt(prompt("Counter offer amount in INR?", "440")) : null;
+            await fetch('/mcp/log_operator_response', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    order_id: orderId,
+                    operator_name: "Master Rafiq Tailors",
+                    decision: decision === 'accept' ? 'accept' : 'reject',
+                    rejection_reason: reason,
+                    counter_offer_inr: counter
+                })
+            });
+            fetchState();
+        }
+
+        fetchState();
+    </script>
+</body>
+</html>
